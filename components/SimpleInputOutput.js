@@ -1,10 +1,14 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, View, Button} from 'react-native';
+import { arrayStore } from '../store/array';
 import { simpleStore } from '../store/simple';
 
 const SimpleInputOutput = observer(() => {
   const {data, setData} = simpleStore;
+  const {arr, pushArr, getCount, getArr, deleteArr} = arrayStore;
+  const nama = 'andik';
+  const umur = 21;
 
   return (
     <View
@@ -23,6 +27,32 @@ const SimpleInputOutput = observer(() => {
           backgroundColor: 'salmon'
         }}
       />
+      <View>
+      <Button 
+        title='get'
+        onPress={() => {
+          console.log(getArr);
+        }}
+      />
+      <Button 
+        title='push'
+        onPress={() => {
+          pushArr({nama, umur});
+        }}
+      />
+      <Button 
+        title='count'
+        onPress={() => {
+          console.log(getCount);
+        }}
+      />
+      <Button 
+        title='delete'
+        onPress={() => {
+          console.log(deleteArr(0.456059051091557));
+        }}
+      />
+      </View>
     </View>
   );
 });
